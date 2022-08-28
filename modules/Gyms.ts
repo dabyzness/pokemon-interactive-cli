@@ -20,13 +20,25 @@ export class Gyms {
     ];
   }
 
-  filterGymsArr(gyms: Gym[], key: keyof Gym, value: number | boolean): Gym[] {
+  filterGymsArr(
+    gyms: Gym[],
+    key: keyof Gym,
+    value: string | number | boolean
+  ): Gym[] {
     return gyms.filter((gym: Gym) =>
-      key === "completed" ? gym[key] === true : gym[key] < value
+      key === "difficulty" ? gym[key] < value : gym[key] === value
     );
   }
 
   getCompletedGyms(): number {
     return this.filterGymsArr(this.gyms, "completed", true).length;
+  }
+
+  getCurrentGym(): Gym {
+    return this.gyms[this.getCompletedGyms()];
+  }
+
+  beatGym(gym: Gym) {
+    this.filterGymsArr(this.gyms, "location", gym.location)[0].completed = true;
   }
 }

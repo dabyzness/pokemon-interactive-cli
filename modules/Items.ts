@@ -14,6 +14,10 @@ export class Items {
     ];
   }
 
+  getItems(): Item[] {
+    return this.items;
+  }
+
   getItem(items: Item[], value: string): Item {
     return items.filter((item: Item) => item.name === value)[0];
   }
