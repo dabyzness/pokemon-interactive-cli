@@ -1,12 +1,23 @@
 // ! Feel free to explore this file, but do not modify anything here!
-export const pokemon = [
+
+export interface Pokemon {
+  readonly number: number;
+  readonly name: string;
+  readonly type: string;
+  hp: number;
+  readonly starter: boolean;
+  readonly canEvolve: boolean;
+  readonly location?: number;
+}
+
+export const pokemon: Array<Pokemon> = [
   {
     number: 1,
     name: "Bulbasaur",
     type: "grass",
     hp: 45,
     starter: true,
-    canEvolve: "yes",
+    canEvolve: true,
   },
   {
     number: 2,
@@ -14,7 +25,7 @@ export const pokemon = [
     type: "grass",
     hp: 60,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
   },
   {
     number: 3,
@@ -22,7 +33,7 @@ export const pokemon = [
     type: "grass",
     hp: 80,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 4,
@@ -30,7 +41,7 @@ export const pokemon = [
     type: "fire",
     hp: 39,
     starter: true,
-    canEvolve: "yes",
+    canEvolve: true,
   },
   {
     number: 5,
@@ -38,7 +49,7 @@ export const pokemon = [
     type: "fire",
     hp: 58,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
   },
   {
     number: 6,
@@ -46,7 +57,7 @@ export const pokemon = [
     type: "fire",
     hp: 78,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 7,
@@ -54,7 +65,7 @@ export const pokemon = [
     type: "water",
     hp: 44,
     starter: true,
-    canEvolve: "yes",
+    canEvolve: true,
   },
   {
     number: 8,
@@ -62,7 +73,7 @@ export const pokemon = [
     type: "water",
     hp: 59,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
   },
   {
     number: 9,
@@ -70,7 +81,7 @@ export const pokemon = [
     type: "water",
     hp: 79,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 10,
@@ -78,7 +89,8 @@ export const pokemon = [
     type: "bug",
     hp: 45,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 1,
   },
   {
     number: 11,
@@ -86,7 +98,8 @@ export const pokemon = [
     type: "bug",
     hp: 50,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 1,
   },
   {
     number: 13,
@@ -94,7 +107,8 @@ export const pokemon = [
     type: "bug",
     hp: 40,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 1,
   },
   {
     number: 12,
@@ -102,7 +116,7 @@ export const pokemon = [
     type: "bug",
     hp: 60,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 14,
@@ -110,7 +124,8 @@ export const pokemon = [
     type: "bug",
     hp: 45,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 1,
   },
   {
     number: 15,
@@ -118,7 +133,7 @@ export const pokemon = [
     type: "bug",
     hp: 65,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 16,
@@ -126,7 +141,8 @@ export const pokemon = [
     type: "normal",
     hp: 40,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 1,
   },
   {
     number: 17,
@@ -134,7 +150,7 @@ export const pokemon = [
     type: "normal",
     hp: 63,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
   },
   {
     number: 18,
@@ -142,7 +158,7 @@ export const pokemon = [
     type: "normal",
     hp: 83,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 19,
@@ -150,7 +166,8 @@ export const pokemon = [
     type: "normal",
     hp: 30,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 1,
   },
   {
     number: 20,
@@ -158,7 +175,7 @@ export const pokemon = [
     type: "normal",
     hp: 55,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 21,
@@ -166,7 +183,8 @@ export const pokemon = [
     type: "normal",
     hp: 40,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 1,
   },
   {
     number: 22,
@@ -174,7 +192,8 @@ export const pokemon = [
     type: "normal",
     hp: 65,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 5,
   },
   {
     number: 23,
@@ -182,7 +201,8 @@ export const pokemon = [
     type: "poison",
     hp: 35,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 3,
   },
   {
     number: 24,
@@ -190,15 +210,16 @@ export const pokemon = [
     type: "poison",
     hp: 60,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 25,
     name: "Pikachu",
     type: "electric",
     hp: 35,
-    starter: true,
-    canEvolve: "yes",
+    starter: false,
+    canEvolve: true,
+    location: 1,
   },
   {
     number: 26,
@@ -206,7 +227,7 @@ export const pokemon = [
     type: "electric",
     hp: 60,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 27,
@@ -214,7 +235,7 @@ export const pokemon = [
     type: "ground",
     hp: 50,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
   },
   {
     number: 28,
@@ -222,7 +243,7 @@ export const pokemon = [
     type: "ground",
     hp: 75,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 29,
@@ -230,7 +251,7 @@ export const pokemon = [
     type: "poison",
     hp: 55,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
   },
   {
     number: 30,
@@ -238,7 +259,8 @@ export const pokemon = [
     type: "poison",
     hp: 70,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 5,
   },
   {
     number: 31,
@@ -246,7 +268,7 @@ export const pokemon = [
     type: "poison",
     hp: 90,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 32,
@@ -254,7 +276,8 @@ export const pokemon = [
     type: "poison",
     hp: 46,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 5,
   },
   {
     number: 33,
@@ -262,7 +285,8 @@ export const pokemon = [
     type: "poison",
     hp: 61,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 5,
   },
   {
     number: 34,
@@ -270,7 +294,7 @@ export const pokemon = [
     type: "poison",
     hp: 81,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 35,
@@ -278,7 +302,8 @@ export const pokemon = [
     type: "fairy",
     hp: 70,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 2,
   },
   {
     number: 36,
@@ -286,7 +311,7 @@ export const pokemon = [
     type: "fairy",
     hp: 95,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 37,
@@ -294,7 +319,7 @@ export const pokemon = [
     type: "fire",
     hp: 38,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
   },
   {
     number: 38,
@@ -302,7 +327,7 @@ export const pokemon = [
     type: "fire",
     hp: 73,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 39,
@@ -310,7 +335,8 @@ export const pokemon = [
     type: "normal",
     hp: 115,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 3,
   },
   {
     number: 40,
@@ -318,7 +344,7 @@ export const pokemon = [
     type: "normal",
     hp: 140,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 41,
@@ -326,7 +352,8 @@ export const pokemon = [
     type: "poison",
     hp: 40,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 2,
   },
   {
     number: 42,
@@ -334,7 +361,8 @@ export const pokemon = [
     type: "poison",
     hp: 75,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 7,
   },
   {
     number: 46,
@@ -342,7 +370,8 @@ export const pokemon = [
     type: "bug",
     hp: 35,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 2,
   },
   {
     number: 47,
@@ -350,7 +379,8 @@ export const pokemon = [
     type: "bug",
     hp: 60,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 5,
   },
   {
     number: 48,
@@ -358,7 +388,8 @@ export const pokemon = [
     type: "bug",
     hp: 60,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 2,
   },
   {
     number: 45,
@@ -366,7 +397,7 @@ export const pokemon = [
     type: "grass",
     hp: 75,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 51,
@@ -374,7 +405,8 @@ export const pokemon = [
     type: "ground",
     hp: 35,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 3,
   },
   {
     number: 50,
@@ -382,7 +414,8 @@ export const pokemon = [
     type: "ground",
     hp: 10,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 3,
   },
   {
     number: 52,
@@ -390,7 +423,8 @@ export const pokemon = [
     type: "normal",
     hp: 40,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 3,
   },
   {
     number: 53,
@@ -398,7 +432,7 @@ export const pokemon = [
     type: "normal",
     hp: 65,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 54,
@@ -406,7 +440,8 @@ export const pokemon = [
     type: "water",
     hp: 50,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 2,
   },
   {
     number: 55,
@@ -414,7 +449,8 @@ export const pokemon = [
     type: "water",
     hp: 80,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 7,
   },
   {
     number: 56,
@@ -422,7 +458,8 @@ export const pokemon = [
     type: "fighting",
     hp: 40,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 3,
   },
   {
     number: 57,
@@ -430,7 +467,7 @@ export const pokemon = [
     type: "fighting",
     hp: 65,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 44,
@@ -438,7 +475,8 @@ export const pokemon = [
     type: "grass",
     hp: 60,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 6,
   },
   {
     number: 58,
@@ -446,7 +484,8 @@ export const pokemon = [
     type: "fire",
     hp: 55,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 4,
   },
   {
     number: 59,
@@ -454,7 +493,7 @@ export const pokemon = [
     type: "fire",
     hp: 90,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 60,
@@ -462,7 +501,8 @@ export const pokemon = [
     type: "water",
     hp: 40,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 5,
   },
   {
     number: 62,
@@ -470,7 +510,7 @@ export const pokemon = [
     type: "water",
     hp: 90,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 61,
@@ -478,7 +518,7 @@ export const pokemon = [
     type: "water",
     hp: 65,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
   },
   {
     number: 63,
@@ -486,7 +526,8 @@ export const pokemon = [
     type: "psychic",
     hp: 25,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 2,
   },
   {
     number: 64,
@@ -494,7 +535,7 @@ export const pokemon = [
     type: "psychic",
     hp: 40,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
   },
   {
     number: 65,
@@ -502,7 +543,7 @@ export const pokemon = [
     type: "psychic",
     hp: 55,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 66,
@@ -510,7 +551,8 @@ export const pokemon = [
     type: "fighting",
     hp: 70,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 4,
   },
   {
     number: 68,
@@ -518,7 +560,7 @@ export const pokemon = [
     type: "fighting",
     hp: 90,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 67,
@@ -526,7 +568,7 @@ export const pokemon = [
     type: "fighting",
     hp: 80,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
   },
   {
     number: 69,
@@ -534,7 +576,8 @@ export const pokemon = [
     type: "grass",
     hp: 50,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 2,
   },
   {
     number: 70,
@@ -542,7 +585,7 @@ export const pokemon = [
     type: "grass",
     hp: 65,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
   },
   {
     number: 71,
@@ -550,7 +593,7 @@ export const pokemon = [
     type: "grass",
     hp: 80,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 73,
@@ -558,7 +601,7 @@ export const pokemon = [
     type: "water",
     hp: 80,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 72,
@@ -566,7 +609,8 @@ export const pokemon = [
     type: "water",
     hp: 40,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 7,
   },
   {
     number: 74,
@@ -574,7 +618,8 @@ export const pokemon = [
     type: "rock",
     hp: 40,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 2,
   },
   {
     number: 76,
@@ -582,7 +627,7 @@ export const pokemon = [
     type: "rock",
     hp: 80,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 77,
@@ -590,7 +635,8 @@ export const pokemon = [
     type: "fire",
     hp: 50,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 7,
   },
   {
     number: 78,
@@ -598,7 +644,7 @@ export const pokemon = [
     type: "fire",
     hp: 65,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 75,
@@ -606,7 +652,7 @@ export const pokemon = [
     type: "rock",
     hp: 55,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
   },
   {
     number: 79,
@@ -614,7 +660,8 @@ export const pokemon = [
     type: "water",
     hp: 90,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 7,
   },
   {
     number: 81,
@@ -622,7 +669,7 @@ export const pokemon = [
     type: "electric",
     hp: 25,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
   },
   {
     number: 80,
@@ -630,7 +677,8 @@ export const pokemon = [
     type: "water",
     hp: 95,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 7,
   },
   {
     number: 82,
@@ -638,7 +686,7 @@ export const pokemon = [
     type: "electric",
     hp: 50,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 84,
@@ -646,7 +694,8 @@ export const pokemon = [
     type: "normal",
     hp: 35,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 5,
   },
   {
     number: 83,
@@ -654,7 +703,7 @@ export const pokemon = [
     type: "normal",
     hp: 52,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 86,
@@ -662,7 +711,8 @@ export const pokemon = [
     type: "water",
     hp: 65,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 7,
   },
   {
     number: 85,
@@ -670,7 +720,7 @@ export const pokemon = [
     type: "normal",
     hp: 60,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 88,
@@ -678,7 +728,8 @@ export const pokemon = [
     type: "poison",
     hp: 80,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 7,
   },
   {
     number: 87,
@@ -686,7 +737,8 @@ export const pokemon = [
     type: "water",
     hp: 90,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 7,
   },
   {
     number: 89,
@@ -694,7 +746,8 @@ export const pokemon = [
     type: "poison",
     hp: 105,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 7,
   },
   {
     number: 90,
@@ -702,7 +755,8 @@ export const pokemon = [
     type: "water",
     hp: 30,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 7,
   },
   {
     number: 43,
@@ -710,7 +764,8 @@ export const pokemon = [
     type: "grass",
     hp: 45,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 2,
   },
   {
     number: 91,
@@ -718,7 +773,7 @@ export const pokemon = [
     type: "water",
     hp: 50,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 92,
@@ -726,7 +781,8 @@ export const pokemon = [
     type: "ghost",
     hp: 30,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 4,
   },
   {
     number: 93,
@@ -734,7 +790,8 @@ export const pokemon = [
     type: "ghost",
     hp: 45,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 4,
   },
   {
     number: 94,
@@ -742,7 +799,7 @@ export const pokemon = [
     type: "ghost",
     hp: 60,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 95,
@@ -750,7 +807,8 @@ export const pokemon = [
     type: "rock",
     hp: 35,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 4,
   },
   {
     number: 97,
@@ -758,7 +816,7 @@ export const pokemon = [
     type: "psychic",
     hp: 85,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 99,
@@ -766,7 +824,7 @@ export const pokemon = [
     type: "water",
     hp: 55,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 98,
@@ -774,7 +832,7 @@ export const pokemon = [
     type: "water",
     hp: 30,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
   },
   {
     number: 101,
@@ -782,7 +840,7 @@ export const pokemon = [
     type: "electric",
     hp: 40,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 100,
@@ -790,7 +848,8 @@ export const pokemon = [
     type: "electric",
     hp: 40,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 4,
   },
   {
     number: 96,
@@ -798,7 +857,8 @@ export const pokemon = [
     type: "psychic",
     hp: 60,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 3,
   },
   {
     number: 103,
@@ -806,7 +866,7 @@ export const pokemon = [
     type: "grass",
     hp: 95,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 102,
@@ -814,7 +874,8 @@ export const pokemon = [
     type: "grass",
     hp: 60,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 5,
   },
   {
     number: 104,
@@ -822,7 +883,8 @@ export const pokemon = [
     type: "ground",
     hp: 50,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 4,
   },
   {
     number: 105,
@@ -830,7 +892,7 @@ export const pokemon = [
     type: "ground",
     hp: 60,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 49,
@@ -838,7 +900,8 @@ export const pokemon = [
     type: "bug",
     hp: 70,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 5,
   },
   {
     number: 110,
@@ -846,7 +909,8 @@ export const pokemon = [
     type: "poison",
     hp: 65,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 7,
   },
   {
     number: 108,
@@ -854,7 +918,7 @@ export const pokemon = [
     type: "normal",
     hp: 90,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 111,
@@ -862,7 +926,8 @@ export const pokemon = [
     type: "ground",
     hp: 80,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 5,
   },
   {
     number: 112,
@@ -870,7 +935,7 @@ export const pokemon = [
     type: "ground",
     hp: 105,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 113,
@@ -878,7 +943,8 @@ export const pokemon = [
     type: "normal",
     hp: 250,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 5,
   },
   {
     number: 114,
@@ -886,7 +952,8 @@ export const pokemon = [
     type: "grass",
     hp: 65,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 7,
   },
   {
     number: 115,
@@ -894,7 +961,8 @@ export const pokemon = [
     type: "normal",
     hp: 105,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 5,
   },
   {
     number: 116,
@@ -902,7 +970,8 @@ export const pokemon = [
     type: "water",
     hp: 30,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 7,
   },
   {
     number: 117,
@@ -910,7 +979,8 @@ export const pokemon = [
     type: "water",
     hp: 55,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 7,
   },
   {
     number: 118,
@@ -918,7 +988,8 @@ export const pokemon = [
     type: "water",
     hp: 45,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 5,
   },
   {
     number: 119,
@@ -926,7 +997,7 @@ export const pokemon = [
     type: "water",
     hp: 80,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 120,
@@ -934,7 +1005,8 @@ export const pokemon = [
     type: "water",
     hp: 30,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 7,
   },
   {
     number: 121,
@@ -942,7 +1014,7 @@ export const pokemon = [
     type: "water",
     hp: 60,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 122,
@@ -950,7 +1022,7 @@ export const pokemon = [
     type: "psychic",
     hp: 40,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 106,
@@ -958,7 +1030,8 @@ export const pokemon = [
     type: "fighting",
     hp: 50,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 6,
   },
   {
     number: 123,
@@ -966,7 +1039,8 @@ export const pokemon = [
     type: "bug",
     hp: 70,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 5,
   },
   {
     number: 124,
@@ -974,7 +1048,7 @@ export const pokemon = [
     type: "ice",
     hp: 65,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 125,
@@ -982,7 +1056,7 @@ export const pokemon = [
     type: "electric",
     hp: 65,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 126,
@@ -990,7 +1064,7 @@ export const pokemon = [
     type: "fire",
     hp: 65,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 127,
@@ -998,7 +1072,7 @@ export const pokemon = [
     type: "bug",
     hp: 65,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 128,
@@ -1006,7 +1080,8 @@ export const pokemon = [
     type: "normal",
     hp: 75,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 5,
   },
   {
     number: 130,
@@ -1014,7 +1089,7 @@ export const pokemon = [
     type: "water",
     hp: 95,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 129,
@@ -1022,7 +1097,8 @@ export const pokemon = [
     type: "water",
     hp: 20,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 3,
   },
   {
     number: 132,
@@ -1030,7 +1106,8 @@ export const pokemon = [
     type: "normal",
     hp: 48,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 6,
   },
   {
     number: 131,
@@ -1038,7 +1115,7 @@ export const pokemon = [
     type: "water",
     hp: 130,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 133,
@@ -1046,7 +1123,7 @@ export const pokemon = [
     type: "normal",
     hp: 55,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
   },
   {
     number: 134,
@@ -1054,7 +1131,7 @@ export const pokemon = [
     type: "water",
     hp: 65,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 135,
@@ -1062,7 +1139,7 @@ export const pokemon = [
     type: "electric",
     hp: 130,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 136,
@@ -1070,7 +1147,7 @@ export const pokemon = [
     type: "fire",
     hp: 65,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 137,
@@ -1078,7 +1155,7 @@ export const pokemon = [
     type: "normal",
     hp: 65,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 138,
@@ -1086,7 +1163,8 @@ export const pokemon = [
     type: "rock",
     hp: 35,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 7,
   },
   {
     number: 139,
@@ -1094,7 +1172,7 @@ export const pokemon = [
     type: "rock",
     hp: 70,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 141,
@@ -1102,7 +1180,7 @@ export const pokemon = [
     type: "rock",
     hp: 60,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 142,
@@ -1110,7 +1188,8 @@ export const pokemon = [
     type: "rock",
     hp: 80,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 7,
   },
   {
     number: 140,
@@ -1118,7 +1197,8 @@ export const pokemon = [
     type: "rock",
     hp: 30,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 7,
   },
   {
     number: 143,
@@ -1126,7 +1206,8 @@ export const pokemon = [
     type: "normal",
     hp: 160,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 5,
   },
   {
     number: 144,
@@ -1134,7 +1215,8 @@ export const pokemon = [
     type: "ice",
     hp: 90,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 8,
   },
   {
     number: 145,
@@ -1142,7 +1224,8 @@ export const pokemon = [
     type: "electric",
     hp: 90,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 8,
   },
   {
     number: 146,
@@ -1150,7 +1233,7 @@ export const pokemon = [
     type: "fire",
     hp: 90,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 147,
@@ -1158,7 +1241,8 @@ export const pokemon = [
     type: "dragon",
     hp: 41,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 6,
   },
   {
     number: 148,
@@ -1166,7 +1250,7 @@ export const pokemon = [
     type: "dragon",
     hp: 61,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
   },
   {
     number: 149,
@@ -1174,7 +1258,7 @@ export const pokemon = [
     type: "dragon",
     hp: 91,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 150,
@@ -1182,7 +1266,7 @@ export const pokemon = [
     type: "psychic",
     hp: 106,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 151,
@@ -1190,7 +1274,7 @@ export const pokemon = [
     type: "psychic",
     hp: 100,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
   },
   {
     number: 109,
@@ -1198,7 +1282,8 @@ export const pokemon = [
     type: "poison",
     hp: 40,
     starter: false,
-    canEvolve: "yes",
+    canEvolve: true,
+    location: 7,
   },
   {
     number: 107,
@@ -1206,6 +1291,7 @@ export const pokemon = [
     type: "fighting",
     hp: 50,
     starter: false,
-    canEvolve: "no",
+    canEvolve: false,
+    location: 6,
   },
 ];

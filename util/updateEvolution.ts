@@ -1,10 +1,13 @@
 import inquirer from "inquirer";
 import fs from "fs";
-import { pokemon } from "../data/data.js";
+import { Pokemon, pokemon } from "../data/data.js";
 
 // Boy this was annoying
-const canItEvolve = async (inputs = [], i = 0) => {
-  const prompts = [
+const canItEvolve = async (
+  inputs: Object[] = [],
+  i: number = 0
+): Promise<Object[] | Function> => {
+  const prompts: Array<Object> = [
     {
       type: "list",
       name: "canEvolve",
@@ -13,7 +16,7 @@ const canItEvolve = async (inputs = [], i = 0) => {
     },
   ];
 
-  const { ...answers } = await inquirer.prompt(prompts);
+  const { ...answers }: string[] = await inquirer.prompt(prompts);
 
   const newInputs = [...inputs, answers];
 
@@ -24,7 +27,11 @@ const canItEvolve = async (inputs = [], i = 0) => {
 
 const main = async () => {
   const inputs = await canItEvolve();
-  const updated = pokemon.map((pokemon, i) => ({ ...pokemon, ...inputs[i] }));
+  const updated: Pokemon[] = pokemon.map((pokemon, i) => {
+    const canEvolve: boolean = inputs[i] === "yes" ? true : false;
+
+    return { ...pokemon, canEvolve };
+  });
 
   updated.forEach((update) => {
     fs.appendFile(
