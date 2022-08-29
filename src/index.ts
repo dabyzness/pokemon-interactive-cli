@@ -95,11 +95,12 @@ const menu = (): Promise<void> | void => {
         message: "Choose an option:\n",
         choices: [
           "View Party",
-          "Sort Party",
+          "Sort Party By Hp",
           "Use Items",
           "View Collections",
           "Catch Pokemon",
           `Challenge ${currentGym.location} Gym`,
+          "Show Current Gym Count",
         ],
       },
     ])
@@ -110,8 +111,8 @@ const menu = (): Promise<void> | void => {
           game.printPokemon(game.party);
           menu();
           break;
-        case "Sort Party":
-          game.sortParty();
+        case "Sort Party By Hp":
+          game.sortPartyByHp();
           menu();
           break;
         case "Use Items":
@@ -119,7 +120,7 @@ const menu = (): Promise<void> | void => {
           useItem();
           break;
         case "View Collections":
-          game.printPokemon(game.collections);
+          useCollections();
           menu();
           break;
         case "Catch Pokemon":
@@ -127,10 +128,28 @@ const menu = (): Promise<void> | void => {
           catchPokemon(foundPokemon);
           break;
         case `Challenge ${currentGym.location} Gym`:
+          game.beatGym(currentGym);
+
+          if (game.party[0].hp === 0) {
+            console.log(
+              `${chalk.bgRedBright(
+                game.party[0].name
+              )} fainted during the battle!`
+            );
+
+            const hasPokemonLeft: boolean = game.checkIfUsablePokemon();
+
+            if (!hasPokemonLeft) {
+              return;
+            }
+          }
           console.log(
             chalk.bgWhite(`You've beaten the ${currentGym.location} gym!`)
           );
-          game.gyms.beatGym(currentGym);
+          menu();
+          break;
+        case "Show Current Gym Count":
+          game.gyms.printCurrentGymCount();
           menu();
           break;
       }
@@ -153,6 +172,7 @@ const catchPokemon = (foundPokemon: Pokemon[]): Promise<void> => {
         const isCaught: boolean = game.catchPokemon(foundPokemon);
         if (!isCaught) {
           console.clear();
+
           catchPokemon(foundPokemon);
         } else {
           console.clear();
@@ -184,16 +204,23 @@ const useItem = (): Promise<void> => {
         type: "list",
         name: "chooseItemOption",
         message: "Choose an Item to use:",
-        choices: items,
+        choices: [...items, "Return"],
       },
       {
         type: "list",
         name: "onWhichPokemon",
         message: "Use on which Pokemon?",
-        choices: partyPokemon,
+        choices: [...partyPokemon, "Return"],
       },
     ])
     .then((answer: { chooseItemOption: string; onWhichPokemon: string }) => {
+      if (
+        answer.chooseItemOption === "Return" ||
+        answer.onWhichPokemon === "Return"
+      ) {
+        menu();
+      }
+
       switch (answer.chooseItemOption) {
         case "pokeball":
           console.log(
@@ -222,6 +249,47 @@ const useItem = (): Promise<void> => {
           menu();
           break;
       }
+    });
+};
+
+const useCollections = (): Promise<void> => {
+  game.printPokemon(game.collections);
+
+  if (game.collections.length === 0) {
+    console.log("You have no Pokemon in collections!");
+    menu();
+  }
+
+  const collNames: string[] = [];
+  const partyNames: string[] = [];
+
+  game.collections.forEach((poke: Pokemon) => collNames.push(poke.name));
+  game.party.forEach((poke: Pokemon) => partyNames.push(poke.name));
+
+  return inquirer
+    .prompt([
+      {
+        type: "list",
+        name: "pokeInColl",
+        message:
+          "Choose the Pokemon from collections that you'd like to swap out:",
+        choices: [...collNames, "Return"],
+      },
+      {
+        type: "list",
+        name: "pokeInParty",
+        message:
+          "Choose the Pokemon from your party that you'd like to swap out:",
+        choices: [...partyNames, "Return"],
+      },
+    ])
+    .then((answer: { pokeInColl: string; pokeInParty: string }) => {
+      if (answer.pokeInColl === "Return" || answer.pokeInParty === "Return") {
+        menu();
+      }
+
+      game.swapFromCollections(answer.pokeInColl, answer.pokeInParty);
+      menu();
     });
 };
 

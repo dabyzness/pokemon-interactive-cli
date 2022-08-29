@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import { Pokemon, pokemon } from "../data/data.js";
-import { Gyms } from "./Gyms.js";
+import { Gym, Gyms } from "./Gyms.js";
 import { Items } from "./Items.js";
 import { getRandomInt } from "../util/getRandomInt.js";
 
@@ -83,11 +83,11 @@ export class Game {
     });
   }
 
-  setPlayerName(value: string) {
+  setPlayerName(value: string = "Red") {
     this.playerName = value;
   }
 
-  setRivalName(value: string) {
+  setRivalName(value: string = "Blue") {
     this.rivalName = value;
   }
 
@@ -116,7 +116,7 @@ export class Game {
     this.party = [...this.party, ...pokemon];
   }
 
-  sortParty() {
+  sortPartyByHp() {
     this.party.sort((a: Pokemon, b: Pokemon) => (a.hp <= b.hp ? 1 : -1));
   }
 
@@ -160,7 +160,7 @@ export class Game {
 
     if (didItCatch > catchRate) {
       console.log(chalk.bgYellow("Argh...almost had it!"));
-      // Insert HP Damage here
+      this.hurtPokemon(this.party, 10);
       return false;
     }
 
@@ -170,6 +170,8 @@ export class Game {
   isPokemonInjured(name: string): boolean {
     const inParty: Pokemon = this.filterPokemonArr(this.party, "name", name)[0];
     const original: Pokemon = this.filterPokemonArr(pokemon, "name", name)[0];
+    console.log(inParty.hp);
+    console.log(original.hp);
 
     return inParty.hp < original.hp;
   }
@@ -214,5 +216,64 @@ export class Game {
     this.swapEvolvedPokemon(poke, evolution[0]);
 
     return true;
+  }
+
+  beatGym(gym: Gym) {
+    this.hurtPokemon(this.party, gym.difficulty * 20);
+    if (!this.checkIfUsablePokemon) {
+      return;
+    }
+    this.gyms.beatGym(gym);
+    this.items.updateInventory("pokeball", gym.difficulty);
+    this.items.updateInventory("potion", gym.difficulty);
+    this.items.updateInventory("rare candy", gym.difficulty);
+  }
+
+  checkIfUsablePokemon(): boolean {
+    let count: number = 0;
+
+    this.party.forEach((poke: Pokemon) =>
+      poke.hp === 0 ? (count += 1) : null
+    );
+
+    if (count === this.party.length) {
+      console.log(
+        `${this.playerName} is out of useable Pokemon!\n${this.playerName} blacked out!\Unfortunately, there are no Pokemon Centers in this game, so it's game over for you!`
+      );
+      return false;
+    } else {
+      console.log("Sorting Pokemon by HP");
+      this.sortPartyByHp;
+      return true;
+    }
+  }
+
+  swapFromCollections(pokeColl: string, pokeParty: string) {
+    const pokeInColl: Pokemon[] = this.filterPokemonArr(
+      this.collections,
+      "name",
+      pokeColl
+    );
+    const pokeInParty: Pokemon[] = this.filterPokemonArr(
+      this.party,
+      "name",
+      pokeParty
+    );
+
+    let collIndex: number = -1;
+    let partyIndex: number = -1;
+
+    this.collections.forEach((poke: Pokemon, i: number) =>
+      poke.name === pokeInColl[0].name ? (collIndex = i) : null
+    );
+
+    this.collections.forEach((poke: Pokemon, i: number) =>
+      poke.name === pokeInParty[0].name ? (partyIndex = i) : null
+    );
+
+    this.party.splice(partyIndex, 1, pokeInColl[0]);
+    this.collections.splice(collIndex, 1, pokeInParty[0]);
+
+    console.log(`Your Pokemon have been swapped!`);
   }
 }

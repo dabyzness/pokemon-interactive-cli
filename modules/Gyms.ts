@@ -41,4 +41,9 @@ export class Gyms {
   beatGym(gym: Gym) {
     this.filterGymsArr(this.gyms, "location", gym.location)[0].completed = true;
   }
+
+  printCurrentGymCount() {
+    const completed: number = this.getCompletedGyms();
+    console.log({ completed: completed, incomplete: 8 - completed });
+  }
 }
