@@ -109,12 +109,12 @@ export class Game {
 
   addToParty(pokemon: Pokemon[] | Pokemon[]) {
     if (this.party.length >= 6) {
-      this.collections.push(...[pokemon][0]);
+      this.collections.push(JSON.parse(JSON.stringify(pokemon[0])));
 
       return;
     }
 
-    this.party.push(...[pokemon][0]);
+    this.party.push(JSON.parse(JSON.stringify(pokemon[0])));
   }
 
   sortPartyByHp() {
@@ -171,8 +171,6 @@ export class Game {
   isPokemonInjured(name: string): boolean {
     const inParty: Pokemon = this.filterPokemonArr(this.party, "name", name)[0];
     const original: Pokemon = this.filterPokemonArr(pokemon, "name", name)[0];
-    console.log(inParty.hp);
-    console.log(original.hp);
 
     return inParty.hp < original.hp;
   }
