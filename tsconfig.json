@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es2017",
     "module": "ESNext",
-    "lib": ["dom", "es6", "es2017", "esnext.asynciterable"],
+    "lib": ["dom", "es6", "es2017", "esnext.asynciterable", "ES2015.Iterable"],
     "skipLibCheck": true,
     "sourceMap": true,
     "outDir": "./dist",

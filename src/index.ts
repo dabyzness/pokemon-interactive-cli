@@ -121,7 +121,6 @@ const menu = (): Promise<void> | void => {
           break;
         case "View Collections":
           useCollections();
-          menu();
           break;
         case "Catch Pokemon":
           const foundPokemon: Pokemon[] = game.findPokemon();
@@ -219,45 +218,48 @@ const useItem = (): Promise<void> => {
         answer.onWhichPokemon === "Return"
       ) {
         menu();
-      }
-
-      switch (answer.chooseItemOption) {
-        case "pokeball":
-          console.log(
-            `${chalk.bgRed(game.playerName)}! This isn't the time to use that!`
-          );
-          menu();
-          break;
-        case "potion":
-          game.items.updateInventory("potion", -1);
-          if (game.isPokemonInjured(answer.onWhichPokemon)) {
-            game.healPokemon(answer.onWhichPokemon);
-            console.log(`${answer.onWhichPokemon} has been fully healed!`);
-          } else {
-            console.log(`Item had no effect on ${answer.onWhichPokemon}`);
-          }
-          menu();
-          break;
-        case "rare candy":
-          const didItEvolve = game.evolvePokemon(answer.onWhichPokemon);
-          if (didItEvolve) {
-            game.items.updateInventory(answer.chooseItemOption, -1);
-            console.log(`You're ${answer.onWhichPokemon} has evolved!`);
-          } else {
-            console.log(`This pokemon can't evolve past its current stage.`);
-          }
-          menu();
-          break;
+      } else {
+        switch (answer.chooseItemOption) {
+          case "pokeball":
+            console.log(
+              `${chalk.bgRed(
+                game.playerName
+              )}! This isn't the time to use that!`
+            );
+            menu();
+            break;
+          case "potion":
+            game.items.updateInventory("potion", -1);
+            if (game.isPokemonInjured(answer.onWhichPokemon)) {
+              game.healPokemon(answer.onWhichPokemon);
+              console.log(`${answer.onWhichPokemon} has been fully healed!`);
+            } else {
+              console.log(`Item had no effect on ${answer.onWhichPokemon}`);
+            }
+            menu();
+            break;
+          case "rare candy":
+            const didItEvolve = game.evolvePokemon(answer.onWhichPokemon);
+            if (didItEvolve) {
+              game.items.updateInventory(answer.chooseItemOption, -1);
+              console.log(`You're ${answer.onWhichPokemon} has evolved!`);
+            } else {
+              console.log(`This pokemon can't evolve past its current stage.`);
+            }
+            menu();
+            break;
+        }
       }
     });
 };
 
-const useCollections = (): Promise<void> => {
+const useCollections = (): Promise<void> | void => {
   game.printPokemon(game.collections);
 
   if (game.collections.length === 0) {
     console.log("You have no Pokemon in collections!");
     menu();
+    return;
   }
 
   const collNames: string[] = [];
@@ -286,6 +288,7 @@ const useCollections = (): Promise<void> => {
     .then((answer: { pokeInColl: string; pokeInParty: string }) => {
       if (answer.pokeInColl === "Return" || answer.pokeInParty === "Return") {
         menu();
+        return;
       }
 
       game.swapFromCollections(answer.pokeInColl, answer.pokeInParty);

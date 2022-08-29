@@ -84,11 +84,11 @@ export class Game {
   }
 
   setPlayerName(value: string = "Red") {
-    this.playerName = value;
+    this.playerName = value || "Red";
   }
 
   setRivalName(value: string = "Blue") {
-    this.rivalName = value;
+    this.rivalName = value || "Blue";
   }
 
   filterPokemonArr(
@@ -109,11 +109,12 @@ export class Game {
 
   addToParty(pokemon: Pokemon[] | Pokemon[]) {
     if (this.party.length >= 6) {
-      this.collections = [...this.collections, ...pokemon];
+      this.collections.push(...[pokemon][0]);
+
       return;
     }
 
-    this.party = [...this.party, ...pokemon];
+    this.party.push(...[pokemon][0]);
   }
 
   sortPartyByHp() {
@@ -267,12 +268,15 @@ export class Game {
       poke.name === pokeInColl[0].name ? (collIndex = i) : null
     );
 
-    this.collections.forEach((poke: Pokemon, i: number) =>
+    this.party.forEach((poke: Pokemon, i: number) =>
       poke.name === pokeInParty[0].name ? (partyIndex = i) : null
     );
 
     this.party.splice(partyIndex, 1, pokeInColl[0]);
     this.collections.splice(collIndex, 1, pokeInParty[0]);
+
+    console.log(partyIndex);
+    console.log(collIndex);
 
     console.log(`Your Pokemon have been swapped!`);
   }
